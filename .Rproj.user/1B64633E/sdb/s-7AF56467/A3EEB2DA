@@ -1,0 +1,17 @@
+{
+    "contents" : "library(httr)\nlibrary(RCurl)\nlibrary(XML)\nlibrary(omdbapi)\nlibrary(rvest)\n\nopts <- list(\n  proxy         = \"202.141.80.24\",\n  proxyusername = \"c.dilip\", \n  proxypassword = \"techtock\", \n  proxyport     = 3128\n)\n\nset_config(\n  use_proxy(url=\"202.141.80.24\", port=3128, username=\"c.dilip\",password=\"techtock\")\n)\n\noptions(RCurlOptions = opts)\n\n#movie=htmlParse(getURL(\"http://www.imdb.com/title/tt0816692/reviews?ref_=tt_urv\"))\n#browseURL(\"http://www.imdb.com/title/tt0816692/\")\n\nget_movie_details=function(movie)\n{\nm=search_by_title(movie)\nm=m[1,]\nid=m$imdbID\n\n  if(!is.null(id))\n  {\n  data=find_by_id(id)\n  data=as.data.frame(data)\n  \n  keywords= tryCatch({\n    key=read_html(getURL(paste(\"http://www.imdb.com/title/\",id,\"/keywords?ref_=tt_stry_kw\")),sep=\"\")\n    key %>% html_nodes(\".sodatext a\") %>% html_text()\n    \n              },\n              error=function(cond)\n              {\n                NA\n                \n              })\n  \n  cast=tryCatch({\n    castHTML=read_html(getURL(paste(\"http://www.imdb.com/title/\",id,\"/\")),sep=\"\")  \n    castHTML %>% html_nodes(\".itemprop .itemprop\") %>% html_text()\n  },\n                error=function(cond)\n                  {\n                  NA\n                })\n  \n  \n  prod=tryCatch({\n    prodHTML=read_html(getURL(paste(\"http://www.imdb.com/title/\",id,\"/companycredits?ref_=tt_dt_co\")),sep=\"\")  \n    prodHTML%>% html_nodes(\"#production+ .simpleList a\") %>% html_text()\n    \n  },error=function(cond)\n    {\n    NA\n  })\n  \n  keywords=paste(keywords,collapse=\", \")\n  data$Keywords=keywords[1]\n  cast=paste(cast,collapse=\", \")\n  data$Cast=cast[1]\n  prod=paste(prod,collapse=\", \")\n  data$Production=prod[1]\n  \ndata=as.data.frame(data)\ndata\n}\n}\n\n\nget_movie_data=function(movies)\n{\n  len=length(movies)\n  print(1)\n  data=get_movie_details(movies[1])\n  \nd=tryCatch({\n  \n  for(i in 2:len)\n  {\n    print(i)\n    data=rbind(data,get_movie_details(movies[i]))\n  }\n  data\n},error={\n  data\n})\nd\n}\n\nget_all_data=function(movies)\n{\n  len=length(movies)\n  print(1) \n  m=search_by_title(movies[1])\n\n    data=get_movie_data(m$imdbID)\n \n    if(len!=1)\n  {\n      for(i in 2:len)\n  {\n    print(i)\n    m=search_by_title(movies[i])\n    data=rbind(data,get_movie_data(m$imdbID))\n  }\n  }\n  data\n}\n\ncsv_data=function()\n{\n  setwd(\"C:/Users/mukul.chaware13/Desktop/N/imdb\")\n  movies=read.csv(\"movie.csv\",header=F,stringsAsFactors = F)\n  movies=movies$V1\nfinal_data=get_movie_data(movies[4801:length(movies)])\n#final_data=get_all_data(movies[1:5])\nfinal_data\n}\n#final_data=csv_data()",
+    "created" : 1452281460427.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2688096805",
+    "id" : "A3EEB2DA",
+    "lastKnownWriteTime" : 1449857439,
+    "path" : "C:/Users/mukul.chaware13/Desktop/N/imdb/imdbBasics.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
