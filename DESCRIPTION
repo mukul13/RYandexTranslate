@@ -1,11 +1,14 @@
 Package: RYandexTranslate
 Type: Package
-Title: R package to access Yandex Translate API
+Title: R Interface to Yandex Translate API
 Version: 1.0
-Date: 2016-01-09
+Date: 2016-02-28
 Author: Mukul Chaware[aut,cre]
 Maintainer: Mukul Chaware <mukul.chaware13@gmail.com>
-Description: To detect language from text and to translate it to supported target language
+Description: 'Yandex Translate' is a statistical machine translation system.
+	The system translates separate words, complete texts, and webpages.
+	This package can be used to detect language from text and to translate it to supported target language.
+URL: https://github.com/mukul13/RYandexTranslate
 License: MIT + file LICENSE
 LazyData: TRUE
 Imports: httr,RCurl,jsonlite

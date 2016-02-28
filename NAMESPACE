@@ -1,3 +1,4 @@
+import(httr,RCurl,jsonlite)
 export(detect_language)
 export(get_translation_direction)
 export(translate)
