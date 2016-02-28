@@ -8,5 +8,5 @@ Maintainer: Mukul Chaware <mukul.chaware13@gmail.com>
 Description: To detect language from text and to translate it to supported target language
 License: MIT + file LICENSE
 LazyData: TRUE
-Imports: httr,RCurl,jsonlite
+imports: httr,RCurl,jsonlite
 RoxygenNote: 5.0.1.9000

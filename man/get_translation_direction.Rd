@@ -18,6 +18,8 @@ data frame giving supported translation direction
 Gets a list of translation directions supported by the service
 }
 \examples{
+\dontrun{
 data=get_translation_direction(api_key)
+}
 }
 

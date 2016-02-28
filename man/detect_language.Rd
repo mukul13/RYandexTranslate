@@ -18,6 +18,8 @@ data frame giving detected language
 Detects the language of the specified text.
 }
 \examples{
+\dontrun{
 data=detect_language(api_key,text="how are you?")
+}
 }
 

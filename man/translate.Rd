@@ -20,6 +20,8 @@ data frame giving translated text
 Translates text to the specified language
 }
 \examples{
+\dontrun{
 data=translate(api_key,text="how are you?",lang="hi")
+}
 }
 
