@@ -1,0 +1,88 @@
+---
+title: "RYandexTranslate"
+author: "Mukul Chaware"
+date: "9 March 2016"
+output: html_document
+---
+
+R Interface to Yandex Translate API. [Yandex Translate](https://translate.yandex.com/) is
+a statistical machine translation system. The system translates separate words, complete 
+texts, and webpages. This package can be used to detect language from text and to 
+translate it to supported target language.
+
+###Installation
+
+To install from CRAN repository:
+
+```{r eval=F}
+install.packages("RYandexTranslate")
+```
+
+To install from github:
+
+```{r eval=F}
+library(devtools)
+install_github("mukul13/RYandexTranslate")
+```
+
+To get free API key, sign up [here](https://tech.yandex.com/translate/doc/dg/concepts/api-overview-docpage/)
+
+```{r eval=F}
+api_key="YOUR API KEY"
+```
+
+
+###Examples
+
+To list all functions supported by RYandexTranslate package
+
+```{r eval=F}
+library(RYandexTranslate)
+ls("package:RYandexTranslate")
+```
+
+```{r eval=F}
+#>"detect_language"   "get_translation_direction"   "translate"   
+```
+
+To get a list of translation directions supported by the service
+
+```{r eval=F}
+directions=get_translation_direction(api_key)
+head(directions$dirs)
+```
+
+```{r eval=F}
+#>"az-ru" "be-bg" "be-cs" "be-de" "be-en" "be-es"
+```
+
+To detect the language of the specified text
+
+```{r eval=F}
+data=detect_language(api_key,text="how are you?")
+data
+```
+
+```{r eval=F}
+#>"en"
+```
+
+To translate text to the specified language
+
+```{r eval=F}
+data=translate(api_key,text="how are you?",lang="en-hi")
+data
+```
+
+```{r eval=F}
+#>$lang
+#>[1] "en-hi"
+#>
+#>$text
+#>[1] "आप कैसे हैं?"
+```
+
+###Resources
+* [Github repo](https://github.com/mukul13/RYandexTranslate)
+* [Yandex Translate API](https://tech.yandex.com/translate/doc/dg/concepts/About-docpage)
+
