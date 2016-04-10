@@ -1,6 +1,6 @@
 # RYandexTranslate
 
-[![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/RYandexTranslate)](https://github.com/metacran/grand-total/cranlogs.app)
+[![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/RYandexTranslate)](http://cran.r-project.org/package=RYandexTranslate)
 [![cran version](http://www.r-pkg.org/badges/version/RYandexTranslate)](http://cran.rstudio.com/web/packages/RYandexTranslate)
 
 R package to translate text using Yandex Translate API.
