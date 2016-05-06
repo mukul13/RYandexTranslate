@@ -1,5 +1,6 @@
 # RYandexTranslate
 
+[![Travis-CI Build Status](https://travis-ci.org/mukul13/RYandexTranslate.svg?branch=master)](https://travis-ci.org/mukul13/RYandexTranslate)
 [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/RYandexTranslate)](http://cran.r-project.org/package=RYandexTranslate)
 [![cran version](http://www.r-pkg.org/badges/version/RYandexTranslate)](http://cran.rstudio.com/web/packages/RYandexTranslate)
 
