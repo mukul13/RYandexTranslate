@@ -50,7 +50,7 @@ detect_language=function(api_key,text="")
 
   if(text != "")
   {
-    url=paste(url,"&text=",text,sep="")
+    url=paste(url,"&text=",URLencode(text),sep="")
   }
   
   d=getURL(url,ssl.verifyhost = 0L, ssl.verifypeer = 0L)
@@ -76,7 +76,7 @@ translate=function(api_key,text="",lang="")
   
   if(text != "")
   {
-    url=paste(url,"&text=",text,sep="")
+    url=paste(url,"&text=",URLencode(text),sep="")
   }
   
   if(lang != "")
